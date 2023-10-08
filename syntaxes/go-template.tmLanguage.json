@@ -101,7 +101,7 @@
     "keywords": {
       "patterns": [
         {
-          "match": "\\b(if|else|range|template|with|end|nil|with|define|block)\\b",
+          "match": "\\b(if|else|range|template|with|end|nil|with|define|block|component|slot)\\b",
           "name": "keyword.control.go-template"
         },
         {

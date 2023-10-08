@@ -1,8 +1,41 @@
 import TokenType from './tokenType';
 
-const control = ['if', 'else', 'range', 'template', 'with', 'end', 'nil', 'with', 'define', 'block'];
-// prettier-ignore
-const builtin = ['and', 'call', 'html', 'index', 'slice', 'js', 'len', 'not', 'or', 'print', 'printf', 'println', 'urlquery', 'eq', 'ne', 'lt', 'le', 'gt', 'ge'];
+const control = [
+  'if',
+  'else',
+  'range',
+  'template',
+  'with',
+  'end',
+  'nil',
+  'with',
+  'define',
+  'block',
+  'component',
+  'slot',
+];
+
+const builtin = [
+  'and',
+  'call',
+  'html',
+  'index',
+  'slice',
+  'js',
+  'len',
+  'not',
+  'or',
+  'print',
+  'printf',
+  'println',
+  'urlquery',
+  'eq',
+  'ne',
+  'lt',
+  'le',
+  'gt',
+  'ge',
+];
 
 export const regexBegin = /\{\{(-[\t ])?/g;
 
@@ -51,5 +84,5 @@ export const matchType = (m: RegExpExecArray): TokenType | undefined => {
   } else if (builtin.includes(m[0])) {
     return TokenType.builtin;
   }
-  return;
+  return undefined;
 };

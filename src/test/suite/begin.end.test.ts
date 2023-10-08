@@ -20,16 +20,20 @@ suite('Parse Begin and End', () => {
 
   test('Parse begin and end', async () => {
     const doc = await vscode.workspace.openTextDocument({
-      content: '  {{ .Field }}  ',
+      content: '  {{ component }}  ',
     });
     const tokens = await provider.provideDocumentSemanticTokens(doc);
     expect(tokens?.data).to.be.Uint32Array();
     // prettier-ignore
-    expect(tokens?.data).to.be.equalTo([
+    console.log(tokens?.data);
+    const s = tokens?.data.toString().replace(' ', '');
+    // prettier-ignore
+    const s2 = [
       0, 2, 2, TokenType.begin, 0,
-      0, 3, 6, TokenType.property, 0,
-      0, 7, 2, TokenType.end, 0,
-    ]);
+      0, 3, 9, TokenType.control, 0,
+      0, 10, 2, TokenType.end, 0,
+    ].toString().replace(' ', '');
+    expect(s).equals(s2);
   });
 
   test('Parse trimmed begin and end', async () => {
